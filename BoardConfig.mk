@@ -1,9 +1,10 @@
+DEVICE_TREE := device/sony/kagura
+
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := F8831
+TARGET_BOOTLOADER_BOARD_NAME := F8332
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8996
-TARGET_POWERHAL_VARIANT := qcom
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 
 # Architecture
@@ -46,6 +47,7 @@ EXTENDED_FONT_FOOTPRINT := true
 
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=16M@0-0xffffffff coherent_pool=2M enforcing=0 androidboot.selinux=permissive
 
+# Boot image
 BOARD_KERNEL_BASE        := 0x80000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x02000000
@@ -68,6 +70,7 @@ BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 
 TARGET_USES_64_BIT_BINDER := true
 
+# File systems
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -79,16 +82,15 @@ TARGET_KERNEL_HAVE_NTFS := true
 BLOCK_BASED_OTA := false
 
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_HW_DISK_ENCRYPTION := true
 
 RECOVERY_SDCARD_ON_DATA := true
+
+# TWRP specific build flags
 TARGET_RECOVERY_FSTAB = device/sony/kagura/recovery.fstab
 TW_THEME := portrait_hdpi
 TW_HAS_NO_RECOVERY_PARTITION := true
 TW_IGNORE_ABS_MT_TRACKING_ID := true
-TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_FUSE_EXFAT := true
-TW_EXTRA_LANGUAGES := true
 TW_NEW_ION_HEAP := true
 TW_DEFAULT_BRIGHTNESS := 230
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone4/temp
@@ -96,6 +98,20 @@ TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TARGET_RECOVERY_DEVICE_MODULES := libbinder libgui libui libEGL libGLES_trace libGLESv2 libprotobuf-cpp-lite libsync
 TW_RECOVERY_ADDITIONAL_RELINK_FILES := $(OUT)/system/lib64/libbinder.so $(OUT)/system/lib64/libgui.so $(OUT)/system/lib64/libui.so $(OUT)/system/lib64/libEGL.so $(OUT)/system/lib64/libGLES_trace.so $(OUT)/system/lib64/libGLESv2.so $(OUT)/system/lib64/libprotobuf-cpp-lite.so $(OUT)/system/lib64/libsync.so
+
+# No love for the wicked (device ships with M)
+TW_EXCLUDE_SUPERSU := true
+
+# Asian region languages
+TW_EXTRA_LANGUAGES := true
+
+# Encryption support
+TW_INCLUDE_CRYPTO := true
+TARGET_HW_DISK_ENCRYPTION := true
+
+# Debug flags
+TWRP_INCLUDE_LOGCAT := true
+# TWRP_INCLUDE_LOGCAT := true
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
