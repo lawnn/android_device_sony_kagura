@@ -19,7 +19,7 @@ $(call inherit-product, device/sony/kagura/device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 PRODUCT_COPY_FILES += \
-    device/sony/kagura/kernel:/kernel
+    device/sony/kagura/Image.gz-dtb:/Image.gz-dtb
 
 # Time Zone data for recovery
 PRODUCT_COPY_FILES += \

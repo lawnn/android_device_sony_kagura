@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/sony/kagura/kernel
+LOCAL_KERNEL := device/sony/kagura/Image.gz-dtb
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
