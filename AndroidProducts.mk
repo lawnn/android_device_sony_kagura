@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_kagura.mk
+    $(LOCAL_DIR)/omni_kagura.mk

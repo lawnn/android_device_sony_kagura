@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Release name
+PRODUCT_RELEASE_NAME := kagura
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/sony/kagura/device.mk)
 
@@ -29,8 +32,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.sf.lcd_density=480 \
     ro.usb.pid_suffix=1E7
 
-PRODUCT_NAME := kagura
+PRODUCT_NAME := omni_kagura
 PRODUCT_DEVICE := kagura
-PRODUCT_MODEL := F8131
+PRODUCT_MODEL := F8332
 PRODUCT_BRAND := Sony
 PRODUCT_MANUFACTURER := Sony
