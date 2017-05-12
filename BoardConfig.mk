@@ -86,21 +86,20 @@ BLOCK_BASED_OTA := false
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-RECOVERY_SDCARD_ON_DATA := true
-
 # TWRP specific build flags
-TARGET_RECOVERY_FSTAB = device/sony/kagura/recovery.fstab
 TW_THEME := portrait_hdpi
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_RECOVERY_FSTAB = device/sony/kagura/recovery.fstab
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/soc/6a00000.ssusb/6a00000.dwc3/gadget/lun%d/file"
 TW_HAS_NO_RECOVERY_PARTITION := true
 TW_IGNORE_ABS_MT_TRACKING_ID := true
 TW_INCLUDE_FUSE_EXFAT := true
 TW_NEW_ION_HEAP := true
-TW_DEFAULT_BRIGHTNESS := 230
+TW_BRIGHTNESS_PATH := "/sys/devices/soc/900000.qcom\x2cmdss_mdp/900000.qcom\x2cmdss_mdp:qcom\x2cmdss_fb_primary/leds/lcd-backlight/brightness"
+TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 162
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone4/temp
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
-TARGET_RECOVERY_DEVICE_MODULES := libbinder libgui libui libEGL libGLES_trace libGLESv2 libprotobuf-cpp-lite libsync
-TW_RECOVERY_ADDITIONAL_RELINK_FILES := $(OUT)/system/lib64/libbinder.so $(OUT)/system/lib64/libgui.so $(OUT)/system/lib64/libui.so $(OUT)/system/lib64/libEGL.so $(OUT)/system/lib64/libGLES_trace.so $(OUT)/system/lib64/libGLESv2.so $(OUT)/system/lib64/libprotobuf-cpp-lite.so $(OUT)/system/lib64/libsync.so
 
 # No love for the wicked (device ships with M)
 TW_EXCLUDE_SUPERSU := true
@@ -111,6 +110,7 @@ TW_EXTRA_LANGUAGES := true
 # Encryption support
 TW_INCLUDE_CRYPTO := true
 TARGET_HW_DISK_ENCRYPTION := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Debug flags
 TWRP_INCLUDE_LOGCAT := true
