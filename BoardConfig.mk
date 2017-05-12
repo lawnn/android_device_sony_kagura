@@ -1,5 +1,8 @@
 DEVICE_TREE := device/sony/kagura
 
+TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw # Lineage
+override TARGET_OUT_VENDOR_SHARED_LIBRARIES = $(TARGET_OUT_SHARED_LIBRARIES)
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := F8332
 
